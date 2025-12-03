@@ -3,7 +3,7 @@
 Interactive portfolio showcasing 10+ production-ready ML/DL projects with modern design. Features project demonstrations, technical skills, internship experience, certifications, and live deployment links. Built with HTML, CSS, and JavaScript. Highlights expertise in TensorFlow, FastAPI, Streamlit, and cloud deployment on Render.
 
 ## 🚀 Live Demo
-[View Portfolio](https://your-github-username.github.io/repository-name)
+[View Portfolio](https://ai-wajid.github.io/Wajid_Portfolio/)
 
 ## 📋 Features
 - 15+ Featured ML/DL Projects
