@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Wajid Raza | AI/ML Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0099cc;
+            --accent: #ff006e;
+            --dark: #0a0e27;
+            --darker: #050813;
+            --light: #f0f0f0;
+            --text: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.8));
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -60%);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .skill-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card li::before {
+            content: '▶';
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 0, 110, 0.05);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(255, 0, 110, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+            padding: 2rem;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-desc {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid var(--primary);
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-body p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            margin-top: auto;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 52%;
+        }
+
+        .timeline-content {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border: 3px solid var(--dark);
+            border-radius: 50%;
+            top: 1.5rem;
+            display: none;
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .stat-box:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: var(--text);
+            background: rgba(5, 8, 19, 0.8);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 2rem;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-8px);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">WAJID</div>
+        <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Abdul Wajid Raza</h1>
+                <p>AI/ML Engineer | Deep Learning Specialist | Back-End Developer</p>
+                
+                <div class="contact-info">
+                    <a href="tel:+919065442236" class="contact-link">📱 +91-9065442236</a>
+                    <a href="mailto:wajidthephenom@gmail.com" class="contact-link">✉️ wajidthephenom@gmail.com</a>
+                    <a href="https://github.com/AI-WAJID" class="contact-link" target="_blank">🐙 GitHub</a>
+                    <a href="https://www.linkedin.com/in/abdul-wajid-raza-aiwajid007" class="contact-link" target="_blank">💼 LinkedIn</a>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Projects</a>
+                    <a href="https://github.com/AI-WAJID" class="btn btn-secondary" target="_blank">Explore GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Production Projects</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">85%+</div>
+                    <div class="stat-label">Model Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Internships Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">7.55</div>
+                    <div class="stat-label">B.Tech CGPA</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Certifications Earned</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🤖 Machine Learning</h3>
+                    <ul>
+                        <li>TensorFlow &amp; Keras</li>
+                        <li>Scikit-Learn</li>
+                        <li>ML Algorithms &amp; Techniques</li>
+                        <li>Feature Engineering</li>
+                        <li>Model Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🧠 Deep Learning</h3>
+                    <ul>
+                        <li>Neural Networks</li>
+                        <li>CNN &amp; RNN</li>
+                        <li>LSTM &amp; GRU</li>
+                        <li>Transformers</li>
+                        <li>NLP &amp; CV</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>💻 Web Development</h3>
+                    <ul>
+                        <li>Flask &amp; Django</li>
+                        <li>Streamlit</li>
+                        <li>HTML &amp; CSS</li>
+                        <li>Responsive Design</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>☁️ Cloud &amp; DevOps</h3>
+                    <ul>
+                        <li>AWS Services</li>
+                        <li>Docker</li>
+                        <li>Git &amp; GitHub</li>
+                        <li>CI/CD Pipeline</li>
+                        <li>Render Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>📊 Data Science</h3>
+                    <ul>
+                        <li>Pandas &amp; NumPy</li>
+                        <li>Data Preprocessing &amp; Cleaning</li>
+                        <li>EDA &amp; Visualization</li>
+                        <li>Plotly, Matplotlib &amp; Seaborn</li>
+                        <li>Statistical Analysis</li>
+                        <li>Feature Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🛠️ Tools &amp; Platforms</h3>
+                    <ul>
+                        <li>Jupyter Notebook/Lab</li>
+                        <li>VS Code</li>
+                        <li>Google Colab</li>
+                        <li>Anaconda</li>
+                        <li>Git &amp; GitHub Workflow</li>
+                        <li>Render Deployment</li>
+                        <li>MS Office (Word, PowerPoint, Excel)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>💻 Programming Languages</h3>
+                    <ul>
+                        <li>Python (Advanced)</li>
+                        <li>HTML &amp; CSS</li>
+                        <li>SQL Basics</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🧩 Core Concepts</h3>
+                    <ul>
+                        <li>Operating Systems</li>
+                        <li>Database Management Systems</li>
+                        <li>Data Structures &amp; Algorithms</li>
+                        <li>Problem Solving</li>
+                        <li>Software Design Patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🌾 Bihar Crop Yield Forecasting</h3>
+                        <p class="project-desc">AI-powered agricultural intelligence platform</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Advanced ML pipeline with XGBoost, LightGBM, and Random Forest models featuring 40+ engineered features for high-accuracy crop yield prediction. Interactive Streamlit dashboard with professional visualizations and risk assessment.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">LightGBM</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://bihar-crop-yield-forecasting-system.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🎮 Ben10 Battle Simulator</h3>
+                        <p class="project-desc">ML-powered interactive alien battle predictor</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Full-stack battle simulation system with FastAPI backend and Streamlit frontend. Pre-trained ML models predict battle outcomes using alien stats. Features real-time predictions with confidence scoring and interactive UI.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://ben10-battle-simulator.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🤖 AI Job Matcher</h3>
+                        <p class="project-desc">Intelligent resume parsing &amp; job matching system</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Resume parser with job scraping from Indeed, Naukri, LinkedIn &amp; Glassdoor. AI-powered matching using TF-IDF vectorization and cosine similarity. Extracts skills and matches with relevant opportunities across multiple job portals.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">PyPDF2</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">BeautifulSoup</span>
+                            <span class="tech-tag">TF-IDF</span>
+                        </div>
+                        <a href="https://ai-wajid-ai-job-matcher-app-42pire.streamlit.app/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>📝 Shakespeare Text Generator</h3>
+                        <p class="project-desc">LSTM-based sequential text generation from literature</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Multi-layer LSTM with bidirectional architecture for sequential text generation from Shakespeare corpus. Real-time generation with customizable parameters, word frequency analysis, and dynamic Plotly visualizations.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <a href="https://shakespeare-text-generator.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🔥 Algerian Forest Fire FWI Prediction</h3>
+                        <p class="project-desc">Fire Weather Index prediction system with web interface</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Predicts Fire Weather Index (FWI) for Algerian forests using Ridge Regression. Flask-based web application with interactive form for weather parameter input. Pre-trained model with feature scaling pipeline.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Ridge Regression</span>
+                            <span class="tech-tag">Render</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                        </div>
+                        <a href="https://forest-fire-ydrp.onrender.com/predictdata" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>👨‍🎓 Student Score Prediction</h3>
+                        <p class="project-desc">Machine learning prediction system for student performance</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Flask web app predicting student scores based on demographic and test preparation data. Uses CatBoost and XGBoost models with preprocessing pipeline. Production-ready with custom error handling and logging.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">CatBoost</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://student-score-predictor-1r1x.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>📨 SMS Spam Detector</h3>
+                        <p class="project-desc">Real-time SMS classification with TF-IDF &amp; Naive Bayes</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Robust spam classification system built with Streamlit. Uses TF-IDF vectorization and Multinomial Naive Bayes. Advanced text preprocessing with stopword removal and stemming. Displays confidence scores for each classification.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">TF-IDF</span>
+                            <span class="tech-tag">Naive Bayes</span>
+                            <span class="tech-tag">NLTK</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                        </div>
+                        <a href="https://sms-spam-detector-ubnz.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🖼️ CIFAR-10 Image Classification</h3>
+                        <p class="project-desc">Deep learning model for image recognition</p>
+                    </div>
+                    <div class="project-body">
+                        <p>CNN-based image classification on CIFAR-10 dataset with TensorFlow. Achieves high accuracy with data augmentation and regularization. Streamlit interface for real-time image predictions with GPU optimization support.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">NumPy</span>
+                        </div>
+                        <a href="https://github.com/AI-WAJID/image_classification" class="project-link" target="_blank">GitHub Repo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>💬 Reply Classification Pipeline</h3>
+                        <p class="project-desc">Email sentiment classification for SvaraAI sales system</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Advanced ML pipeline classifying email replies into positive, negative, and neutral categories. Ensemble approach combining Logistic Regression, SVM, and Naive Bayes. Achieves 95.38% accuracy with comprehensive text preprocessing and TF-IDF vectorization.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">SVM</span>
+                            <span class="tech-tag">TF-IDF</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <a href="https://github.com/AI-WAJID/reply_classification_pipeline.git" class="project-link" target="_blank">GitHub Repo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>👥 Customer Churn Prediction</h3>
+                        <p class="project-desc">ML model predicting customer retention probability</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Predictive analytics system identifying customers likely to churn. Uses classification algorithms with feature importance analysis. Enables proactive retention strategies through data-driven insights on customer behavior patterns.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://github.com/AI-WAJID/Customer_Churn_Prediction.git" class="project-link" target="_blank">GitHub Repo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🎬 Movie Recommender System</h3>
+                        <p class="project-desc">Content-based movie recommendation engine</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Intelligent recommendation system analyzing user preferences using content-based filtering. Recommends movies based on genres, actors, directors, and synopses. Interactive Streamlit interface with personalized suggestions tailored to user taste.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Content Filtering</span>
+                            <span class="tech-tag">Cosine Similarity</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://github.com/AI-WAJID/Movie_Recommender.git" class="project-link" target="_blank">GitHub Repo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>💻 Laptop Price Predictor</h3>
+                        <p class="project-desc">ML-based laptop pricing estimation system</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Advanced regression model predicting laptop prices from hardware specifications. Analyzes processor, RAM, storage, GPU, and screen features. User-friendly interface for buyers and sellers to determine fair market value with high accuracy predictions.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Regression</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://github.com/AI-WAJID/Laptop_Price_Predictor.git" class="project-link" target="_blank">GitHub Repo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🚗 Car Price Predictor</h3>
+                        <p class="project-desc">Used car price estimation with real-time predictions</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Flask-based web app predicting used car prices based on brand, model, year, fuel type, and kilometers driven. Dynamic model dropdown with responsive UI. Real-time AJAX predictions without page reload and clean Bootstrap 5 interface.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Bootstrap 5</span>
+                            <span class="tech-tag">AJAX</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://car-price-predictor-akiw.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🩺 Diabetes Predictor</h3>
+                        <p class="project-desc">Medical diagnosis prediction with SVM pipeline</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Streamlit web app predicting diabetes risk from medical information. Uses trained SVM pipeline with StandardScaler preprocessing. Modern responsive UI with light/dark mode support and input transparency features for explainability.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SVM</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Render</span>
+                        </div>
+                        <a href="https://diabetes-predictor-zmvx.onrender.com/" class="project-link" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>AI &amp; Machine Learning Intern</h4>
+                        <div class="date">Dec 2024 – Jan 2025</div>
+                        <p><strong>Innovate Intern</strong> • 6-week comprehensive internship in AI/ML with focus on face &amp; eye detection using Haarcascades in OpenCV. 
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://drive.google.com/file/d/1b7z-h8JYZOeZtjZL3sV0Z7TcdWfetnu-/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Certificate</a>
+                            <a href="https://drive.google.com/file/d/1b7jLsO9VCmVrlMk2syRbNy19lNhhZvSy/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Offer Letter</a>
+                        </div></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Salesforce Developer Intern</h4>
+                        <div class="date">Dec 2023 – Jan 2024</div>
+                        <p><strong>SmartInternz</strong> • 8-week virtual internship mastering Apex programming &amp; Lightning Web Components for process automation.
+                        <div style="margin-top: 1rem;">
+                            <a href="https://drive.google.com/file/d/1sMCO9LLl6nAuwxTw7eC-y5CCFSXjJbwJ/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Certificate</a>
+                        </div></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Machine Learning Intern</h4>
+                        <div class="date">Feb 2023 – Apr 2023</div>
+                        <p><strong>Technophilia Solutions</strong> • Developed IPL Winning Predictor with 85% accuracy &amp; interactive Streamlit web application.
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://drive.google.com/file/d/1zZn4EXZyaBA0b91431-o-4-KtqHngks1/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Certificate</a>
+                            <a href="https://drive.google.com/file/d/18FM8N-QjY_yojnXQLLRvMFimN-sBGxk9/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Offer Letter</a>
+                        </div></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education &amp; Certifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>B.Tech in Computer Science &amp; Engineering</h4>
+                        <div class="date">May 2025</div>
+                        <p><strong>Bihar Engineering University, Patna</strong> • CGPA: 7.55 • Specialized in ML/DL/NLP</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Machine Learning Certification</h4>
+                        <div class="date">Feb 2023</div>
+                        <p><strong>Technophilia Winter Camp with B-Club IIT Kharagpur</strong> • Supervised learning, feature engineering &amp; model deployment</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Full-Stack Development Certification</h4>
+                        <div class="date">Feb 2023</div>
+                        <p><strong>iHUB Divya Sampark, IIT Roorkee</strong> • Mobile &amp; Web Development with UI/UX focus</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Certifications &amp; Awards</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>AI &amp; Machine Learning Internship Certificate</h4>
+                        <div class="date">Dec 2024 – Jan 2025</div>
+                        <p><strong>Innovate Intern</strong> • Comprehensive 6-week internship in AI/ML with advanced face &amp; eye detection using Haarcascades in OpenCV.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Machine Learning Specialization</h4>
+                        <div class="date">Feb 2023</div>
+                        <p><strong>Technophilia Winter Camp with B-Club IIT Kharagpur</strong> • Comprehensive program covering supervised learning, feature engineering, model optimization &amp; deployment strategies.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Full-Stack Development Certification</h4>
+                        <div class="date">Feb 2023</div>
+                        <p><strong>iHUB Divya Sampark, IIT Roorkee</strong> • Advanced Mobile &amp; Web Development with comprehensive UI/UX design &amp; backend integration focus.
+                        <div style="margin-top: 1rem;">
+                            <a href="https://drive.google.com/file/d/1lKJ06SfsLxhfFEYqTNhHt1H9bBU5YxNu/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Certificate</a>
+                        </div></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Salesforce Developer Certification</h4>
+                        <div class="date">Dec 2023 – Jan 2024</div>
+                        <p><strong>SmartInternz</strong> • 8-week advanced internship in Salesforce with expertise in Apex programming &amp; Lightning Web Components development.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>GenAI Powered Data Analytics Job Simulation</h4>
+                        <div class="date">September 2025</div>
+                        <p><strong>Forage - Tata Data Visualization: Empowering Business with Effective Insights</strong> • Completed practical tasks in exploratory data analysis, risk profiling, predicting delinquency with AI, and implementing AI-driven collections strategy.
+                        <div style="margin-top: 1rem;">
+                            <a href="https://drive.google.com/file/d/1zekFHZ1DoFMZ6qOrt1P8_mlmSmbuBmuW/view?usp=drive_link" target="_blank" style="color: var(--primary); text-decoration: underline; font-size: 0.9rem;">📄 Certificate</a>
+                        </div></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2>My Resume</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📄</div>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Download Resume</h3>
+                    <p style="color: var(--text); margin-bottom: 1.5rem; font-size: 0.9rem;">Get my complete resume in PDF format with all qualifications, experience, and skills.</p>
+                    <a href="https://drive.google.com/file/d/19ebl4EX0EcJwVogT53HCbdKYUM3S4LTU/view?usp=drive_link" class="btn btn-primary" style="width: 100%; justify-content: center;" target="_blank">📥 Download Resume</a>
+                </div>
+
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👁️</div>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">View Online</h3>
+                    <p style="color: var(--text); margin-bottom: 1.5rem; font-size: 0.9rem;">Preview my resume directly in your browser without downloading.</p>
+                    <a href="https://drive.google.com/file/d/19ebl4EX0EcJwVogT53HCbdKYUM3S4LTU/view?usp=drive_link" class="btn btn-secondary" style="width: 100%; justify-content: center;" target="_blank">👁️ View Resume</a>
+                </div>
+
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📋</div>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Key Highlights</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: var(--text); margin-bottom: 0.5rem;">✓ 10+ Production Projects</li>
+                        <li style="color: var(--text); margin-bottom: 0.5rem;">✓ 85%+ Model Accuracy</li>
+                        <li style="color: var(--text); margin-bottom: 0.5rem;">✓ 3 Internships Completed</li>
+                        <li style="color: var(--text); margin-bottom: 0.5rem;">✓ 5 Certifications Earned</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📧</div>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Email</h3>
+                    <a href="mailto:wajidthephenom@gmail.com" style="color: var(--text); text-decoration: none;">wajidthephenom@gmail.com</a>
+                </div>
+
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📱</div>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Phone</h3>
+                    <a href="tel:+919065442236" style="color: var(--text); text-decoration: none;">+91-9065442236</a>
+                </div>
+
+                <div class="stat-box">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔗</div>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Social</h3>
+                    <div style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="https://github.com/AI-WAJID" target="_blank" style="color: var(--text); text-decoration: none; font-weight: bold;">GitHub</a>
+                        <a href="https://www.linkedin.com/in/abdul-wajid-raza-aiwajid007" target="_blank" style="color: var(--text); text-decoration: none; font-weight: bold;">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Abdul Wajid Raza. All rights reserved.</p>
+        <p>Built with ❤️ using HTML, CSS &amp; JavaScript</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill cards and project cards
+        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .stat-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const animateCounters = () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(el => {
+                const text = el.textContent.trim();
+                if (text.includes('+') || text.includes('%')) {
+                    el.style.animation = 'pulse 1s ease-in-out infinite';
+                }
+            });
+        };
+
+        window.addEventListener('load', animateCounters);
+    </script>
+</body>
+</html>
