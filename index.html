@@ -52,6 +52,37 @@
             z-index: 2;
         }
 
+        /* Desktop Mode Toggle */
+        .mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .mode-toggle:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        body.mobile-mode .mode-toggle::after {
+            content: ' 📱';
+        }
+
+        body:not(.mobile-mode) .mode-toggle::after {
+            content: ' 💻';
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -136,6 +167,7 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
+            margin-top: 60px;
         }
 
         .hero::before {
@@ -565,87 +597,280 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Mobile Mode Styles */
+        body.mobile-mode nav {
+            padding: 0.8rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        body.mobile-mode nav .logo {
+            font-size: 1.3rem;
+        }
+
+        body.mobile-mode nav ul {
+            gap: 0.8rem;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        body.mobile-mode nav a {
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        body.mobile-mode .hero {
+            min-height: 90vh;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        body.mobile-mode .hero::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        body.mobile-mode .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        body.mobile-mode .hero p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        body.mobile-mode section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        body.mobile-mode section h2::after {
+            width: 80px;
+        }
+
+        body.mobile-mode section {
+            padding: 2.5rem 1rem;
+        }
+
+        body.mobile-mode .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        body.mobile-mode .skill-card {
+            padding: 1.5rem;
+        }
+
+        body.mobile-mode .skill-card h3 {
+            font-size: 1.1rem;
+        }
+
+        body.mobile-mode .skill-card li {
+            font-size: 0.9rem;
+        }
+
+        body.mobile-mode .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        body.mobile-mode .project-header {
+            min-height: 100px;
+            padding: 1.5rem;
+        }
+
+        body.mobile-mode .project-card h3 {
+            font-size: 1.1rem;
+        }
+
+        body.mobile-mode .project-desc {
+            font-size: 0.85rem;
+        }
+
+        body.mobile-mode .project-body {
+            padding: 1.5rem;
+        }
+
+        body.mobile-mode .project-body p {
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        body.mobile-mode .tech-tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+        }
+
+        body.mobile-mode .timeline::before {
+            left: 0;
+        }
+
+        body.mobile-mode .timeline-item:nth-child(odd),
+        body.mobile-mode .timeline-item:nth-child(even) {
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 2rem;
+            text-align: left;
+        }
+
+        body.mobile-mode .timeline-dot {
+            left: 0;
+            transform: translateX(-8px);
+        }
+
+        body.mobile-mode .timeline-content {
+            padding: 1.2rem;
+        }
+
+        body.mobile-mode .timeline-content h4 {
+            font-size: 1rem;
+        }
+
+        body.mobile-mode .cta-buttons {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        body.mobile-mode .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        body.mobile-mode .contact-info {
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        body.mobile-mode .contact-link {
+            width: 100%;
+            justify-content: center;
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        body.mobile-mode .stats-container {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        body.mobile-mode .stat-box {
+            padding: 1.5rem 1rem;
+        }
+
+        body.mobile-mode .stat-number {
+            font-size: 2rem;
+        }
+
+        body.mobile-mode .stat-label {
+            font-size: 0.85rem;
+        }
+
+        body.mobile-mode footer {
+            padding: 1.5rem 0.8rem;
+        }
+
+        body.mobile-mode footer p {
+            font-size: 0.85rem;
+        }
+
+        /* Tablet and below */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            nav .logo {
+                font-size: 1.5rem;
+            }
+
             nav ul {
                 gap: 1rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            nav a {
+                font-size: 0.9rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            section {
+                padding: 3rem 1.5rem;
             }
 
-            section h2 {
-                font-size: 1.8rem;
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
 
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                margin-left: 0;
-                margin-right: 0;
-                padding-left: 2rem;
-                text-align: left;
-            }
-
-            .timeline-dot {
-                left: 0;
-                transform: translateX(-8px);
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .contact-info {
-                flex-direction: column;
-            }
-
-            .contact-link {
-                width: 100%;
-                justify-content: center;
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
+        /* Small devices */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 85vh;
+                margin-top: 2rem;
+            }
+
+            .mode-toggle {
+                bottom: 15px;
+                right: 15px;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Extra small devices */
         @media (max-width: 480px) {
+            html {
+                font-size: 13px;
+            }
+
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 0.6rem 0.6rem;
+            }
+
+            nav .logo {
+                font-size: 1.1rem;
             }
 
             nav ul {
-                flex-direction: column;
                 gap: 0.5rem;
-                width: 100%;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .mode-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
             }
 
             .hero {
                 min-height: 80vh;
+                padding: 0.8rem;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 0.8rem;
             }
 
             section {
-                padding: 3rem 1rem;
+                padding: 1.8rem 0.6rem;
             }
 
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
+            section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
             }
         }
 
@@ -660,6 +885,9 @@
     </style>
 </head>
 <body>
+    <!-- Mode Toggle Button -->
+    <button class="mode-toggle" onclick="toggleDesktopMode()" title="Toggle between Desktop and Mobile view"></button>
+
     <nav>
         <div class="logo">WAJID</div>
         <ul>
@@ -1285,6 +1513,22 @@
     </footer>
 
     <script>
+        // Toggle Desktop/Mobile Mode
+        function toggleDesktopMode() {
+            document.body.classList.toggle('mobile-mode');
+            // Save preference to localStorage
+            const isMobileMode = document.body.classList.contains('mobile-mode');
+            localStorage.setItem('portfolioMode', isMobileMode ? 'mobile' : 'desktop');
+        }
+
+        // Load saved preference on page load
+        window.addEventListener('load', function() {
+            const savedMode = localStorage.getItem('portfolioMode');
+            if (savedMode === 'mobile') {
+                document.body.classList.add('mobile-mode');
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
